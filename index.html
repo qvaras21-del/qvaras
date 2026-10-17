@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#050712">
+  <title>Для тебя</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,500&family=Manrope:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+  <canvas id="stage"></canvas>
+
+  <!-- Счётчик этапов и музыка -->
+  <nav class="progress" aria-label="Прогресс">
+    <span class="count"><b id="stepNow">01</b> / 04 <em id="stepName">Начало</em></span>
+    <span class="dots" id="dots"><i class="on"></i><i></i><i></i><i></i></span>
+  </nav>
+  <button class="music" id="music" type="button" aria-pressed="false" aria-label="Включить музыку">
+    <span class="note">♪</span><span class="label">Музыка</span>
+  </button>
+
+  <!-- 01 / НАЧАЛО -->
+  <section class="scene active" id="sceneStart">
+    <svg class="beat-heart" viewBox="0 0 32 30" aria-hidden="true">
+      <path d="M16 28S2 19 2 9.500C2 5 5.500 2 9.500 2c3 0 5.300 1.700 6.500 4C17.200 3.700 19.500 2 22.500 2 26.500 2 30 5 30 9.500 30 19 16 28 16 28z"/>
+    </svg>
+    <h2 class="title">Для тебя</h2>
+    <p class="lead">У меня есть кое-что, что я давно хотел тебе показать…</p>
+    <button class="btn primary" id="openBtn" type="button">Открыть</button>
+  </section>
+
+  <!-- 02 / ПИСЬМО (текст письма меняй прямо здесь) -->
+  <section class="scene" id="sceneLetter">
+    <div class="env-wrap" id="envWrap">
+      <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Открыть конверт">
+        <div class="env-body">
+          <div class="env-back"></div>
+          <div class="env-front"></div>
+          <div class="env-flap"></div>
+          <div class="seal">♥</div>
+        </div>
+        <article class="letter" id="letter">
+          <h3>Сердце, которое стало тобой</h3>
+          <div class="letter-body" id="letterBody">
+            <p>Иногда сложно подобрать слова, чтобы объяснить, насколько человек важен.</p>
+            <p>Поэтому я решил создать кое-что особенное — маленький мир только для тебя.</p>
+            <p>Я просто хотел, чтобы ты знала: ты занимаешь особенное место в моих мыслях.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+    <div class="slot">
+      <p class="hint" id="envHint">Нажми на конверт</p>
+      <button class="btn primary" id="nextBtn" type="button" hidden>Дальше</button>
+    </div>
+  </section>
+
+  <!-- 03 / СЕРДЦЕ — анимация на canvas -->
+  <header class="intro" id="intro">
+    <h1>Для тебя</h1>
+    <p>Сердце, которое стало тобой</p>
+  </header>
+
+  <!-- 04 / ФИНАЛ -->
+  <footer class="outro" id="outro">
+    <p class="caption">Ты — самое красивое, что случилось со мной</p>
+    <div class="actions">
+      <button class="replay" id="secretBtn" type="button">Ещё одно слово ✦</button>
+      <button class="replay" id="replay" type="button">Показать ещё раз</button>
+    </div>
+  </footer>
+
+  <!-- Секретная страница -->
+  <div class="secret" id="secret" role="dialog" aria-modal="true" aria-labelledby="secretTitle" aria-hidden="true">
+    <div class="secret-card">
+      <p class="secret-kicker">✦ секретная страница ✦</p>
+      <h2 id="secretTitle">Ты дошла до конца</h2>
+      <p>Рядом с тобой даже обычные дни становятся чем-то тёплым, и я хочу это запомнить.</p>
+      <p>Спасибо за то, какая ты есть: за улыбку, которую ты прячешь в ладонях, и за свет, который остаётся после тебя.</p>
+      <button class="btn" id="secretClose" type="button">Вернуться</button>
+    </div>
+  </div>
+
+  <!-- Фото в виде base64 (работает при открытии файла двойным кликом) -->
+  <script src="photo.js"></script>
+  <script src="script.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
